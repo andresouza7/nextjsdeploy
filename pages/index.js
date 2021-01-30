@@ -6,14 +6,25 @@ import server from '../server'
 import axios from 'axios'
 
 export async function getServerSideProps(context) {
-  let response = await axios.get(`${server}/api/products`)
-  let products = response.data
 
-  return {
+  try {
+    let response = await axios.get(`${server}/api/products`)
+    let products = response.data
+    return {
       props: {
           products
       }
   }
+  } catch (error) {
+    console.log(error)
+    return {
+      props: {
+          products: []
+      }
+  }
+  }
+
+  
 }
 
 export default function Home({products}) {

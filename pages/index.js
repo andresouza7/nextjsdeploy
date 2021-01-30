@@ -5,21 +5,23 @@ import Link from 'next/link'
 import server from '../server'
 import axios from 'axios'
 
-export async function getServerSideProps(context) {
-  let response = await axios.get(`${server}/api/products`)
-  let products = response.data
+// export async function getServerSideProps(context) {
+//   let response = await axios.get(`${server}/api/products`)
+//   let products = response.data
 
-  return {
-      props: {
-          products
-      }
-  }
-}
+//   return {
+//       props: {
+//           products
+//       }
+//   }
+// }
 
-export default function Home({products}) {
+export default function Home() {
   console.log(`auth ${process.env.HARPERDB_AUTH_TOKEN}`)
   console.log(`url ${process.env.HARPERDB_URL}`)
+  console.log(process.env.VERCEL_URL)
 
+  let products = []
 
   return (
     <div className={styles.container}>

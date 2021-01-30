@@ -18,6 +18,9 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({products}) {
+  console.log(`auth ${process.env.HARPERDB_AUTH_TOKEN}`)
+  console.log(`url ${process.env.HARPERDB_URL}`)
+
   return (
     <div className={styles.container}>
       <Head>

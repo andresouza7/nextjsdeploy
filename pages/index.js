@@ -7,7 +7,7 @@ import axios from 'axios'
 
 export async function getServerSideProps(context) {
   let response = await axios.get(`${server}/api/products`)
-  let products = response.data
+  let products = response.data || []
 
   return {
       props: {

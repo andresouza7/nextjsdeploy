@@ -7,7 +7,11 @@ export default async function route(req, res) {
     "sql": "SELECT * FROM nextapp.products"
   });
 
-  let response = await axios.post('', body);
-
-  res.json(response.data);
+  try {
+    let response = await axios.post('', body)
+    res.json(response.data)
+  } catch (error) {
+    console.log(error)
+    res.json([])
+  }
 }

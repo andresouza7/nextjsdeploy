@@ -1,7 +1,9 @@
 const URL_LOCALHOST = 'http://localhost:3000'
-const URL_CLOUD = 'https://nextjs-9xegayk8q.vercel.app/'
+const URL_CLOUD = process.env.VERCEL_URL
 
-const server = process.env.NODE_ENV === 'development' ? URL_LOCALHOST : URL_CLOUD
+console.log(URL_CLOUD)
+
+const server = URL_CLOUD ? URL_CLOUD : URL_LOCALHOST
 
 export default server
 

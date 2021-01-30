@@ -3,10 +3,11 @@ import List from '../components/List'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import server from '../server'
+import axios from 'axios'
 
 export async function getServerSideProps(context) {
-  let response = await fetch(`${server}/api/products`);
-  let products = await response.json();
+  let response = await axios.get(`${server}/api/products`)
+  let products = response.data
 
   return {
       props: {
@@ -16,8 +17,6 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({products}) {
-  console.log(products);
-  
   return (
     <div className={styles.container}>
       <Head>
